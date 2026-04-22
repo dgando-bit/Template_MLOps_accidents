@@ -65,7 +65,7 @@ def process_data(input_filepath_users, input_filepath_caract, input_filepath_pla
     df_caract["com_mopao"] = df_caract["com_mopao"].str.replace("2B", "202")
 
     #--Converting columns types
-    df_caract[["dep","com", "hour"]] = df_caract[["dep","com", "hour"]].astype(int)
+   # df_caract[["dep","com", "hour"]] = df_caract[["dep","com", "hour"]].astype(int)
 
     dico_to_float = { 'lat': float, 'long':float}
     df_caract["lat"] = df_caract["lat"].str.replace(',', '.')
