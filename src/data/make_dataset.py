@@ -60,12 +60,8 @@ def process_data(input_filepath_users, input_filepath_caract, input_filepath_pla
     df_caract["com"] = df_caract["com"].str.replace("2A", "201")
     df_caract["com"] = df_caract["com"].str.replace("2B", "202")
 
-    df_caract["com_mopao"] = df_caract["com"].str[:3]
-    df_caract["com_mopao"] = df_caract["com_mopao"].str.replace("2A", "201")
-    df_caract["com_mopao"] = df_caract["com_mopao"].str.replace("2B", "202")
-
     #--Converting columns types
-   # df_caract[["dep","com", "hour"]] = df_caract[["dep","com", "hour"]].astype(int)
+    df_caract[["dep","com", "hour"]] = df_caract[["dep","com", "hour"]].astype(int)
 
     dico_to_float = { 'lat': float, 'long':float}
     df_caract["lat"] = df_caract["lat"].str.replace(',', '.')
@@ -106,7 +102,7 @@ def process_data(input_filepath_users, input_filepath_caract, input_filepath_pla
 
     #--Dropping columns 
     list_to_drop = ['senc','larrout','actp', 'manv', 'choc', 'nbv', 'prof', 'plan', 'Num_Acc', 'id_vehicule', 'num_veh', 'pr', 'pr1','voie', 'trajet',"secu2", "secu3",'adr', 'v1', 'lartpc','occutc','v2','vosp','locp','etatp', 'infra', 'obs' ]
-    df.drop(list_to_drop, axis=1, inplace=True)
+    # df.drop(list_to_drop, axis=1, inplace=True)
 
     #--Dropping lines with NaN values
     col_to_drop_lines = ['catv', 'vma', 'secu1', 'obsm', 'atm']
