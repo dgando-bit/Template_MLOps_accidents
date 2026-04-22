@@ -31,8 +31,7 @@ def main(input_filepath, output_filepath):
     process_data(input_filepath_users, input_filepath_caract, input_filepath_places, input_filepath_veh, output_filepath)
 
 def process_data(input_filepath_users, input_filepath_caract, input_filepath_places, input_filepath_veh, output_folderpath):
-    print("Processing data...")
-    print(input_filepath_users)
+
     #--Importing dataset
     df_users = pd.read_csv(input_filepath_users, sep=";")
     df_caract = pd.read_csv(input_filepath_caract, sep=";", header=0, low_memory=False)
@@ -60,6 +59,10 @@ def process_data(input_filepath_users, input_filepath_caract, input_filepath_pla
     df_caract["dep"] = df_caract["dep"].str.replace("2B", "202")
     df_caract["com"] = df_caract["com"].str.replace("2A", "201")
     df_caract["com"] = df_caract["com"].str.replace("2B", "202")
+
+    df_caract["com_mopao"] = df_caract["com"].str[:3]
+    df_caract["com_mopao"] = df_caract["com_mopao"].str.replace("2A", "201")
+    df_caract["com_mopao"] = df_caract["com_mopao"].str.replace("2B", "202")
 
     #--Converting columns types
     df_caract[["dep","com", "hour"]] = df_caract[["dep","com", "hour"]].astype(int)
