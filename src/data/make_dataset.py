@@ -31,7 +31,8 @@ def main(input_filepath, output_filepath):
     process_data(input_filepath_users, input_filepath_caract, input_filepath_places, input_filepath_veh, output_filepath)
 
 def process_data(input_filepath_users, input_filepath_caract, input_filepath_places, input_filepath_veh, output_folderpath):
- 
+    print("Processing data...")
+    print(input_filepath_users)
     #--Importing dataset
     df_users = pd.read_csv(input_filepath_users, sep=";")
     df_caract = pd.read_csv(input_filepath_caract, sep=";", header=0, low_memory=False)
